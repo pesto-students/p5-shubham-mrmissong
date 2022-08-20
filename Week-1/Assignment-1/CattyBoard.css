@@ -1,0 +1,121 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+#sidebar {
+    display: flex;
+    grid-template-rows: 20% 20% 20% 20%;
+    align-items: center;
+    margin: 0 0;
+    float: left;
+    width: 60px;
+    padding-bottom: 200px;
+    background-color: #f0f0f0;
+}
+#sidebar .leftnav i {
+    width: 15px;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-top: 40px;
+    padding-right: 10px;
+}
+.navbar {
+    display: flex;
+    background-color: #454545;
+	padding: 20px;
+	gap: 20px;
+}
+.art img {
+
+    width: 180px;
+}
+.player-container {
+    color: white;
+    padding-left: 40px;
+}
+.player-container h3 {
+    font-weight: 400;
+    color: #ffffff;
+    display: inline-block;
+    float: right;
+    position: center;
+    padding-bottom: 20px;
+}
+.player-container h6 {
+    font-weight: 300;
+}
+
+.screenC {
+    display: flex;
+    color: antiquewhite;
+    text-size-adjust: 10px;
+	flex-direction: row;
+    gap: 2rem;
+}
+tr:nth-child(even) {
+    background-color:#f0f0f0;
+    justify-content: space-between;
+}
+table {
+    width: 96%;
+    text-indent: 10px;
+    border-spacing: 0;
+}
+td {
+    padding: 15px;
+}
+.blue {
+ color: #0000FF;
+}
+
+.player h3 {
+    display: inline-flex;
+    color: antiquewhite;
+    width: 100px;
+    font-size: 15px;
+}
+.detail {
+	display: flex;
+    gap: 20px;
+}
+.detail img{
+    height: 100px;
+    padding: 10px;
+}
+.controls {
+    justify-content: right;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.controls i {
+    color:white;
+    justify-content: left;
+    padding: 10px 10px 0px 280px;
+}
+.player {
+    background-color: rgba(67,104,156,255);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+	display: flex;
+    justify-content: space-between;
+  }
+.player-control{
+	display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.player-container
+{
+	display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.bottom-text {
+	display: flex;
+    align-items: center;
+}
