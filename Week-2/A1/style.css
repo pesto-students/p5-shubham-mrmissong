@@ -1,0 +1,124 @@
+body{
+    background-color: rgb(143, 245, 228);
+    font-family: fantasy;
+}
+main{
+    font-family: sans-serif;
+}
+#top {
+    display: flex;
+    background-color: greenyellow;
+    align-items: center;
+    height: 100px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#top h1 {
+    display: flex;
+    flex-direction: row;
+}
+#top img {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start
+}
+header {
+    display: flex;
+    background-color: dimgray;
+    justify-content: center;
+    height: 40px;
+    align-items: center;
+    font-family: fantasy;
+}
+#navigation {
+    background-color: rgb(179, 219, 206);
+    display: flex;
+    justify-content: space-around;
+    height: 40px;
+    align-items:center;
+    font-weight: bold;
+}
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#two {
+    display:flex;
+    flex-wrap:wrap ;
+    flex-direction: column;
+    width: 500px;
+}
+#photo {
+    display: flex;
+    padding-top: 40px;
+    justify-content: center;
+}
+#content #photo img{
+    height: 300px;
+    width: 200px;
+}
+#content h2 {
+    display:flex;
+    justify-content: center;
+    font-weight: bold;
+}
+#three {
+    display:flex;
+    flex-wrap:wrap ;
+    flex-direction: column;
+    width: 600px;
+    padding-bottom: 20px;
+}
+#ad {
+    display: flex;
+    background-color: blueviolet;
+    height: 50px;
+    align-items: center;
+    padding-left: 10px;
+}
+#toys img{
+    display: flex;
+    height: 540px;
+    width: 1100px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px ;
+}
+#bottom {
+    display: flex;
+    background-color: greenyellow;
+    justify-content: space-around;
+    height: 40px;
+    padding-top: 20px;
+    font-weight: bold;
+}
+#details {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+    font-style: helvetica;
+}
+#signup {
+    background-color: #0e0f0f;
+    transition-property: all;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+}
+#signup:hover {
+    background-color: rgb(79, 80, 80);
+}
+#toys img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
