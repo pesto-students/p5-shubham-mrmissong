@@ -2,6 +2,9 @@
     margin: 0px;
     padding: 0px;
 }
+body {
+    font-family: 'Lato';font-size: 18px;
+}
 #sidebar {
     display: flex;
     grid-template-rows: 20% 20% 20% 20%;
@@ -117,5 +120,7 @@ td {
 }
 .bottom-text {
 	display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 }
