@@ -1,6 +1,5 @@
 function createStack() {
   let items = []; // declared item using let
-
   function push(item) {
     this.items.push(item);
   }
@@ -13,6 +12,7 @@ function createStack() {
 }
 
 const stack = createStack();
+
 stack.push(10);
 stack.push(5);
 stack.pop();
