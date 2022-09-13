@@ -1,18 +1,21 @@
-const Fib = {
-    [Symbol.iterator]: function (num) {
-        let before = 0;
-        let actual = 1;
-        let next = 1;
+const Fibonacci = (num) => ({
+    [Symbol.iterator]: () => {
+        let old = 0;
+        let i = 1;
+        let current = 0;
         return {
             next: () => {
-                for (let i = 0; i < num; i++) {
-                    console.log(next)
-                    before = actual + next
-                    actual = next
-                    next = before
+                if (i++ <= num) {
+                    console.log(old + " " + "still false");
+                    [old, current] = [current, (old + current) || 1];
+                    return { value: old, done: false }
+                }
+                else {
+                    console.log("true now");
+                    return { done: true };
                 }
             }
         }
     }
-}
-console.log([...Fib])
+});
+console.log([...Fibonacci(15)]);
