@@ -26,4 +26,5 @@ const Fibonacci = (num) => ({
         }
     }
 });
+
 console.log([...Fibonacci(14)]);

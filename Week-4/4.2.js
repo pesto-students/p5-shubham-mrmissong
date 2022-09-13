@@ -11,6 +11,7 @@ class Teacher extends Person {
         this.subject = subject;
     }
 }
+
 // prototypical inheritance allows objects to add or inherit properties or methods from other objects
 Teacher.prototype.teach = function (subject) {
     console.log(this.name + " " + "is teaching" + " " + subject)

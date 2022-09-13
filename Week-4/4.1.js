@@ -10,6 +10,7 @@ let okay = new Promise((resolve, reject) => {
     }
 })
 
+
 Promise.allSettled([okay]);
 okay.then((message) => {
     console.log('Then.' + " " + message)
