@@ -27,4 +27,7 @@ const Fibonacci = (num) => ({
     }
 });
 
-console.log([...Fibonacci(14)]);
+const fib = Fibonacci(11)
+for (const iterator of fib) {
+    console.log(iterator);
+}
