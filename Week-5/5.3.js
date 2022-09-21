@@ -1,3 +1,4 @@
+// Exercise 5.3
 function hasDuplicate(arr) {
     const container = new Set()
     for (let number of arr) {

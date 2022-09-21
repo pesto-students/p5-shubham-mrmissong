@@ -1,3 +1,4 @@
+// Exercise 5.2
 const vowelCount = (str) => {
     const vowelMap = new Map()
     const vowels = ["a", "e", "i", "o", "u"]
