@@ -16,7 +16,22 @@ const mathOp = {
     }
 }
 
-test('Adding 4 and 5 should return 9', () => {
-    let result = mathOp.sum(4, 5)
-    expect(result).toBe(9);
-})
+test('Adding 6 and 2 should return 8', () => {
+    let result = mathOp.sum(6, 2)
+    expect(result).toBe(8);
+});
+
+test('Subtracting 6 and 2 should return 4', () => {
+    let result = mathOp.sub(6, 2)
+    expect(result).toBe(4);
+});
+
+test('Multiplying 6 and 2 should return 12', () => {
+    let result = mathOp.mul(6, 2)
+    expect(result).toBe(12);
+});
+
+test('Dividing 6 and 2 should return 3', () => {
+    let result = mathOp.div(6, 2)
+    expect(result).toBe(3);
+});
