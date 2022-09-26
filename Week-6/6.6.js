@@ -1,11 +1,6 @@
 //threeSum
 let arr = new Array(-1, 2, 1, 4);
 
-
-
-
-
-
 let closestSum = function(arr, target) {
     arr.sort((a, b) => a - b);
     let res = arr[0] + arr[1] + arr[2];
