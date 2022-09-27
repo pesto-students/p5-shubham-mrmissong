@@ -6,6 +6,7 @@ for (let i = 0; i < prices.length; i++) {
     for (let j = i + 1; j < prices.length; j++) {
         let current = prices[j];
         if (base > current) {
+            console.log("loss")
         } else {
             let diff = current - base;
             if (diff > closest) {
