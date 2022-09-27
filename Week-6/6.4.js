@@ -1,5 +1,4 @@
 let prices = new Array(7, 1, 5, 3, 6, 4)
-let max = 104;
 let closest = 0;
 
 for (let i = 0; i < prices.length; i++) {
