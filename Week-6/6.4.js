@@ -1,5 +1,5 @@
 let prices = new Array(7, 1, 5, 3, 6, 4)
-let closest = 0;
+let profit = 0;
 
 for (let i = 0; i < prices.length; i++) {
     let base = prices[i];
@@ -9,10 +9,10 @@ for (let i = 0; i < prices.length; i++) {
             console.log("loss")
         } else {
             let diff = current - base;
-            if (diff > closest) {
-                closest = diff;
+            if (diff > profit) {
+                profit = diff;
             }
         }
     }
 }
-console.log(closest);
+console.log(profit);
