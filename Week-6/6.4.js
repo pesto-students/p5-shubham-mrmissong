@@ -1,8 +1,8 @@
-let prices = new Array(7, 1, 5, 3, 6, 4, 106)
+let prices = new Array(7, 1, 5, 3, 6, 4)
 let max = 104;
 let closest = 0;
 
-for (let i = 0; i < prices.length < max; i++) {
+for (let i = 0; i < prices.length; i++) {
     let base = prices[i];
     for (let j = i + 1; j < prices.length; j++) {
         let current = prices[j];
