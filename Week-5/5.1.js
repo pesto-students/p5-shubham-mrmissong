@@ -1,5 +1,5 @@
 // Exercise 5.1
-function taskOne(email) {
+async function taskOne(email) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("getting email")
@@ -7,7 +7,7 @@ function taskOne(email) {
         }, 4000)
     })
 }
-function taskTwo(phone) {
+async function taskTwo(phone) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("getting contact")
@@ -15,7 +15,7 @@ function taskTwo(phone) {
         }, 2000)
     })
 }
-function taskThree(age) {
+async function taskThree(age) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log("getting age")
