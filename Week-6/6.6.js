@@ -11,10 +11,6 @@ let threeSum = function(nums, target) {
             let sum = nums[i]+nums[j]+nums[k];
             if(Math.abs(target-sum)<Math.abs(target-res)){
                 res = sum;
-                while(nums[j] === nums[j+1]) j++;
-                while(nums[k] === nums[k+1]) k--;
-                j++;
-                k++;
             }
             else if(sum < target){
                 j++;
