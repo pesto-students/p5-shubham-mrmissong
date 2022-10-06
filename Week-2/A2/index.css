@@ -1,0 +1,65 @@
+#main {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    margin-top: 200px;
+    left: 43%;
+    border: 1px solid rgb(255, 255, 255);
+    transition-property: all;
+}
+#main h2 {
+    position: absolute;
+    font-size: 40px;
+    right: 75px;
+    z-index: -1;
+    bottom: 35px;
+
+}
+#box1 {
+    position: absolute;
+    transition-property: all;
+    transition-duration: 2s;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+#main:hover #box1 {
+    transform: rotate(90deg) translateY(100px);
+}
+#box2 {
+    transition-duration: 2s;
+    transition-property: all;
+    position: absolute;
+    right: 0;
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+}
+#main:hover #box2 {
+    transform: rotate(-90deg) translateY(100px);
+}
+#box3 {
+    transition-duration: 2s;
+    transition-property: all;
+    position: absolute;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    bottom: 0px;
+}
+#main:hover #box3 {
+    transform: rotate(-90deg) translateY(-100px);
+}
+#box4 {
+    transition-duration: 2s;
+    transition-property: all;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    background-color:green;
+    width: 100px;
+    height: 100px;
+}
+#main:hover #box4 {
+    transform: rotate(90deg) translateY(-100px);
+}
