@@ -1,3 +1,4 @@
+//Next Greatest Element
 let arr = new Array(1, 3, 2, 4);
 let result = [];
 function nGE(arr) {
