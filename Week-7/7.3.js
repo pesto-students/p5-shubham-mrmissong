@@ -1,4 +1,5 @@
-detectLoop() {
+//detect a loop
+function detectLoop() {
 	if (this.head === null || this.head.next === null) return false;
 	let slow = this.head;
 	let fast = this.head;

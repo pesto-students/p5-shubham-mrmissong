@@ -1,3 +1,4 @@
+//balance parenthesis
 function peek(stack) {
 	return stack[stack.length - 1];
 }

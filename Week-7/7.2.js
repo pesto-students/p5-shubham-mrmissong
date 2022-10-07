@@ -1,3 +1,4 @@
+//rotate a linked list
 class LinkedList {
 	constructor(data) {
 		this.head = {
