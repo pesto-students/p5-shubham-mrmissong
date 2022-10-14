@@ -1,3 +1,4 @@
+//buy and sell stocks
 let maxProfit = (prices) => {
 	let profit = 0;
 	let minimumPrice = prices[0];
