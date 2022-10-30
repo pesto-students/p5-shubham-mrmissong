@@ -1,3 +1,4 @@
+//max depth
 class Node {
 	constructor(value) {
 		this.date = value;

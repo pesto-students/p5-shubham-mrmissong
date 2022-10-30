@@ -1,3 +1,4 @@
+//if path exists in graph
 var validPath = function (n, edges, source, destination) {
 	let adjL = {};
 	let visited = [];
