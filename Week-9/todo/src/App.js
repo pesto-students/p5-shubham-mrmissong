@@ -3,18 +3,18 @@ import "./App.css";
 import Form from "./components/Form";
 import List from "./components/List";
 function App() {
+	const initialState = JSON.parse(localStorage.getItem("todos")) || [];
 	const [inputText, setInputText] = useState("");
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(initialState);
 	const [status, setStatus] = useState("all");
 	const [filtered, setFiltered] = useState([]);
 
 	useEffect(() => {
-		getFromLocal();
-	}, []);
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}, [todos]);
 
 	useEffect(() => {
 		filterHandler();
-		saveToLocal();
 	}, [todos, status]);
 
 	const filterHandler = () => {
@@ -28,19 +28,6 @@ function App() {
 			default:
 				setFiltered(todos);
 				break;
-		}
-	};
-	//save to localTodo
-	const saveToLocal = () => {
-		localStorage.setItem("todos", JSON.stringify(todos));
-	};
-
-	const getFromLocal = () => {
-		if (localStorage.getItem("todos") === null) {
-			localStorage.setItem("todos", JSON.stringify([]));
-		} else {
-			let localTodo = JSON.parse(localStorage.getItem("todos"));
-			setTodos(localTodo);
 		}
 	};
 
