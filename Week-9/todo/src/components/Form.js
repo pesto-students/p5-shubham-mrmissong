@@ -6,6 +6,10 @@ const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
 	};
 	const submitTodoHandler = (e) => {
 		e.preventDefault();
+		if (!inputText) {
+			alert("enter a task");
+			return;
+		}
 		setTodos([
 			...todos,
 			{
@@ -22,22 +26,24 @@ const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
 	};
 	return (
 		<form>
-			<input
-				type="text"
-				className="task"
-				placeholder="enter a task"
-				value={inputText}
-				onChange={inputHandler}
-			/>
-			<button className="add" onClick={submitTodoHandler}>
-				add
-			</button>
-			<div className="selectTask">
-				<select name="todos" className="todo-filter" onChange={statusHandler}>
-					<option value="all">All</option>
-					<option value="completed">Completed</option>
-					<option value="uncompleted">Uncompleted</option>
-				</select>
+			<div className="main">
+				<input
+					type="text"
+					className="task"
+					placeholder="enter a task"
+					value={inputText}
+					onChange={inputHandler}
+				/>
+				<button className="addB" onClick={submitTodoHandler}>
+					add
+				</button>
+				<div className="selectTask">
+					<select name="todos" className="todo-filter" onChange={statusHandler}>
+						<option value="all">All</option>
+						<option value="completed">Completed</option>
+						<option value="uncompleted">Uncompleted</option>
+					</select>
+				</div>
 			</div>
 		</form>
 	);

@@ -46,7 +46,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<header className="App-header">Naba's to-do</header>
+			<header className="App-header">To-do</header>
 			<Form
 				inputText={inputText}
 				setInputText={setInputText}
