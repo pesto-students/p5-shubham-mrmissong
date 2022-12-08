@@ -46,10 +46,10 @@ ll.append("c");
 ll.append("d");
 ll.append("e");
 ll.append("f");
-ll.printList();
-ll.rotate();
-ll.rotate();
-ll.rotate();
+// ll.printList();
+ll.rotate(2);
+// ll.rotate();
+// ll.rotate();
 ll.printList();
 
-console.log(ll);
+// console.log(ll);

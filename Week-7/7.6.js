@@ -1,30 +1,45 @@
-//Queue
-class Queue {
-	constructor() {
-		this.s1 = [];
-		this.s2 = [];
-	}
-	enqueue(val) {
-		this.s1.push(val);
-	}
-	dequeue() {
-		if (this.s1 !== null) {
-			this.s2.push(this.s1.pop());
-		} else if (this.s2 !== null) {
-			this.s1.push(this.s2.pop());
+var stack1 = [];
+var stack2 = [];
+
+function enqueue(ele) {
+	if (stack2.length > 0) {
+		var len = stack2.length;
+		for (var i = 0; i < len; i++) {
+			var p = stack2.pop();
+			stack1.push(p);
 		}
 	}
-	print() {
-		return [this.s1, this.s2];
+	stack1.push(ele);
+}
+
+function dequeue(ele) {
+	if (stack2.length > 0) {
+		stack2.pop();
+	} else if (stack2.length === 0) {
+		if (stack1.length === 0) {
+			return "Queue is empty";
+		} else if (stack1.length === 1) {
+			return stack1.pop();
+		} else if (stack1.length > 0) {
+			var len = stack1.length;
+			for (var i = 0; i < len; i++) {
+				var p = stack1.pop();
+				stack2.push(p);
+			}
+			return stack2.pop();
+		}
 	}
 }
-const q = new Queue();
-q.enqueue(1);
-q.enqueue(2);
-q.enqueue(3);
-q.enqueue(4);
-q.enqueue(5);
-q.print();
-q.dequeue();
-q.dequeue();
-console.log(q);
+enqueue(1);
+enqueue(2);
+enqueue(3);
+enqueue(4);
+enqueue(5);
+console.log(stack1);
+console.log(stack2);
+dequeue();
+dequeue();
+dequeue();
+
+console.log(stack1);
+console.log(stack2);
