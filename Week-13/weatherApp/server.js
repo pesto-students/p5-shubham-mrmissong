@@ -1,8 +1,13 @@
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 
 const app = express();
+
+const API_KEY = process.env.API_KEY;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
 	res.send("weather");
@@ -15,7 +20,7 @@ app.post("/weather", (req, res) => {
 	const count = req.body.count;
 	const url = ` https://api.openweathermap.org/data/2.5/forecast?q=${
 		zipcode ? zipcode : city
-	}&appid=429bc2066143d059bd734e7dece07fcd&units=metric&count=${count}`;
+	}&appid=${API_KEY}&units=metric&count=${count}`;
 
 	https.get(url, (response) => {
 		response.on("data", (data) => {
