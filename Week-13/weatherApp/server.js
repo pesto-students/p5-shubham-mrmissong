@@ -27,7 +27,13 @@ app.post("/weather", (req, res) => {
 			const weather = JSON.parse(data);
 			list = weather.list;
 			list.forEach((e) => {
-				main.push([e.main, e.weather[0].description, e.dt_txt]);
+				let [date, time] = e.dt_txt.split(" ");
+				main.push({
+					"temperature details": e.main,
+					"temperature description": e.weather[0].description,
+					date: date,
+					time: time,
+				});
 			});
 			const page = req.query.page;
 			const limit = req.query.limit;
