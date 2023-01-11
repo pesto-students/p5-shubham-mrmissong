@@ -20,21 +20,27 @@ app.post("/weather", (req, res) => {
 	const count = req.body.count;
 	const url = ` https://api.openweathermap.org/data/2.5/forecast?q=${
 		zipcode ? zipcode : city
-	}&appid=${API_KEY}&units=metric&count=${count}`;
-
+	}&appid=${API_KEY}&units=metric&cnt=${count}`;
 	https.get(url, (response) => {
 		response.on("data", (data) => {
 			const weather = JSON.parse(data);
+			// console.log(response);
+			console.log(weather);
+
 			list = weather.list;
-			list.forEach((e) => {
-				let [date, time] = e.dt_txt.split(" ");
-				main.push({
-					"temperature details": e.main,
-					"temperature description": e.weather[0].description,
-					date: date,
-					time: time,
+			if (Array.isArray(list)) {
+				list.forEach((e) => {
+					let [date, time] = e.dt_txt.split(" ");
+					main.push({
+						"temperature details": e.main,
+						"temperature description": e.weather[0].description,
+						date: date,
+						time: time,
+					});
+					console.log(main);
 				});
-			});
+			}
+
 			const page = req.query.page;
 			const limit = req.query.limit;
 
@@ -46,4 +52,6 @@ app.post("/weather", (req, res) => {
 	});
 });
 
-app.listen(8080);
+app.listen(8080, () => {
+	console.log("started");
+});
