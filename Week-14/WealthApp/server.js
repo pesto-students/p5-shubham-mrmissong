@@ -1,11 +1,13 @@
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const authRoute = require("./routes/authRoute");
 
-const dbURI =
-	"mongodb+srv://vscodemissong:mortyparty@mancode.ku2ubmu.mongodb.net/testdb?retryWrites=true&w=majority";
+const dbURI = process.env.dbURI;
 mongoose.set("strictQuery", true);
 mongoose
 	.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
