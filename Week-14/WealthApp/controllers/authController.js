@@ -5,6 +5,15 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const Invoice = require("../models/Invoice");
+const nodeMailer = require("nodemailer");
+const transporter = nodeMailer.createTransport({
+	service: "hotmail",
+	auth: {
+		user: "wealthapp2023@outlook.com",
+		pass: "Wealthapp",
+	},
+});
+
 const register = (req, res, next) => {
 	bcrypt.hash(req.body.password, 10, function (err, hashedPass) {
 		if (err) {
@@ -45,6 +54,19 @@ const login = (req, res) => {
 						let token = jwt.sign({ name: user.name }, "secretToken", {
 							expiresIn: "24h",
 						});
+						const options = {
+							from: "wealthapp2023@outlook.com",
+							to: `${username}`,
+							subject: "LOGGED IN TO WEALTH APP",
+							text: "WELCOME",
+						};
+						transporter.sendMail(options, function (err, info) {
+							if (err) {
+								console.log(err);
+								return;
+							}
+							console.log("Sent: " + info.response);
+						});
 						res.json({ message: "successful login", token: token });
 					} else {
 						res.json({ message: "password doesn't match" });
@@ -67,10 +89,29 @@ const financePost = (req, res) => {
 		SAL: req.body.SAL,
 		EXP: req.body.EXP,
 	});
-
+	const userid = req.params.userid;
 	userFinance
 		.save()
 		.then((data) => {
+			User.findById(userid)
+				.then((result) => {
+					const options = {
+						from: "wealthapp2023@outlook.com",
+						to: `${result.email}`,
+						subject: "Changes made to finances",
+						text: "WELCOME",
+					};
+					transporter.sendMail(options, function (err, info) {
+						if (err) {
+							console.log(err);
+							return;
+						}
+						console.log("Sent: " + info.response);
+					});
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 			res.status(200).json({ message: "user finance updated" });
 		})
 		.catch((error) => {
@@ -154,6 +195,7 @@ const upload = multer({
 
 const uploadPost = (req, res) => {
 	upload(req, res, (err) => {
+		const userid = req.params.userid;
 		let userInvoice = new Invoice({
 			ImageDesc: req.body.ImageDesc,
 			myImage: {
@@ -171,6 +213,21 @@ const uploadPost = (req, res) => {
 					if (req.file == undefined) {
 						res.send("No file selected!");
 					} else {
+						User.findById(userid).then((result) => {
+							const options = {
+								from: "wealthapp2023@outlook.com",
+								to: `${result.email}`,
+								subject: "Invoice added",
+								text: "WELCOME",
+							};
+							transporter.sendMail(options, function (err, info) {
+								if (err) {
+									console.log(err);
+									return;
+								}
+								console.log("Sent: " + info.response);
+							});
+						});
 						res.send("File uploaded!");
 					}
 				}
@@ -182,13 +239,12 @@ const uploadPost = (req, res) => {
 };
 const uploadGet = (req, res) => {
 	const userid = req.params.userid;
+
 	User.findById(userid)
 		.then((data) => {
 			Invoice.findOne({ userid }).then((result) => {
 				const { name, phone } = data;
-
 				const { ImageDesc, myImage } = result;
-				console.log("================>" + myImage.imageName);
 				res.json({
 					name: name,
 					phone: phone,
