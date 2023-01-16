@@ -99,7 +99,7 @@ const financePost = (req, res) => {
 						from: "wealthapp2023@outlook.com",
 						to: `${result.email}`,
 						subject: "Changes made to finances",
-						text: "WELCOME",
+						text: "Finances changed",
 					};
 					transporter.sendMail(options, function (err, info) {
 						if (err) {
@@ -218,7 +218,7 @@ const uploadPost = (req, res) => {
 								from: "wealthapp2023@outlook.com",
 								to: `${result.email}`,
 								subject: "Invoice added",
-								text: "WELCOME",
+								text: "bill/invoice added",
 							};
 							transporter.sendMail(options, function (err, info) {
 								if (err) {
@@ -242,16 +242,20 @@ const uploadGet = (req, res) => {
 
 	User.findById(userid)
 		.then((data) => {
-			Invoice.findOne({ userid }).then((result) => {
-				const { name, phone } = data;
-				const { ImageDesc, myImage } = result;
-				res.json({
-					name: name,
-					phone: phone,
-					desc: ImageDesc,
-					image: [myImage.data, myImage.contentType, myImage.imageName],
+			Invoice.findOne({ userid })
+				.then((result) => {
+					const { name, phone } = data;
+					const { ImageDesc, myImage } = result;
+					res.json({
+						name: name,
+						phone: phone,
+						desc: ImageDesc,
+						image: [myImage.contentType, myImage.imageName],
+					});
+				})
+				.catch((err) => {
+					console.log(err);
 				});
-			});
 		})
 		.catch((err) => {
 			res.json({ message: "error" });
