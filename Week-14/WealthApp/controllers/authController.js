@@ -2,7 +2,9 @@ const User = require("../models/User");
 const Finance = require("../models/Finance");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const multer = require("multer");
+const path = require("path");
+const Invoice = require("../models/Invoice");
 const register = (req, res, next) => {
 	bcrypt.hash(req.body.password, 10, function (err, hashedPass) {
 		if (err) {
@@ -120,7 +122,85 @@ const savingsGet = (req, res) => {
 			res.json({ message: "error" });
 		});
 };
-const billPost = (req, res) => {};
+
+//upload api
+
+const storage = multer.diskStorage({
+	destination: "./public/uploads/",
+	filename: function (req, file, cb) {
+		cb(
+			null,
+			file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+		);
+	},
+});
+
+const upload = multer({
+	storage: storage,
+	limit: { fileSize: 2000000 },
+	fileFilter: (req, file, cb) => {
+		if (
+			file.mimetype === "image/png" ||
+			file.mimetype === "image/jpg" ||
+			file.mimetype === "image/jpeg"
+		) {
+			cb(null, true);
+		} else {
+			cb(null, false);
+			return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+		}
+	},
+}).single("myImage");
+
+const uploadPost = (req, res) => {
+	upload(req, res, (err) => {
+		let userInvoice = new Invoice({
+			ImageDesc: req.body.ImageDesc,
+			myImage: {
+				data: req.file.buffer,
+				contentType: req.file.mimetype,
+				imageName: req.file.originalname,
+			},
+			userid: req.params.userid,
+		})
+			.save()
+			.then((d) => {
+				if (err) {
+					res.send(err);
+				} else {
+					if (req.file == undefined) {
+						res.send("No file selected!");
+					} else {
+						res.send("File uploaded!");
+					}
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	});
+};
+const uploadGet = (req, res) => {
+	const userid = req.params.userid;
+	User.findById(userid)
+		.then((data) => {
+			Invoice.findOne({ userid }).then((result) => {
+				const { name, phone } = data;
+
+				const { ImageDesc, myImage } = result;
+				console.log("================>" + myImage.imageName);
+				res.json({
+					name: name,
+					phone: phone,
+					desc: ImageDesc,
+					image: [myImage.data, myImage.contentType, myImage.imageName],
+				});
+			});
+		})
+		.catch((err) => {
+			res.json({ message: "error" });
+		});
+};
 module.exports = {
 	register,
 	login,
@@ -128,4 +208,6 @@ module.exports = {
 	financeGet,
 	savingsGet,
 	deleteUserInfo,
+	uploadPost,
+	uploadGet,
 };

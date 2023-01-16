@@ -4,9 +4,10 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const multer = require("multer");
 const bodyParser = require("body-parser");
 const authRoute = require("./routes/authRoute");
-
+const path = require("path");
 const dbURI = process.env.dbURI;
 mongoose.set("strictQuery", true);
 mongoose
