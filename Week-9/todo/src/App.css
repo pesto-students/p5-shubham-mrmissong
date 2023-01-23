@@ -2,7 +2,7 @@
   text-align: center;
   height:800px;
   border: 1px dashed black;
-  background-color: rgb(37, 196, 143);
+  background-color: #4e6190;
 }
 .completed{
   text-decoration: line-through;
@@ -59,7 +59,7 @@ li{
 ul{
   border: 2px solid black;
   margin: 10px;
-  background-color: rgb(125, 185, 209);
+  background-color: #99a8bb;
   margin-left: -50px;
   margin-right: 0px;
 }
