@@ -38,14 +38,6 @@
 
 ---
 
----
-
----
-
----
-
----
-
 **Architecture:**
 
 - 3-tier architecture with Load Balancers, User Services, Graph Services, User Live Websockets, and Analytics Services
@@ -117,4 +109,4 @@ Analytics Services:
 ---
 
 **HLD**
-![](./Assets/HLD.jpg)
+![](./Assets/HLD.JPG)
