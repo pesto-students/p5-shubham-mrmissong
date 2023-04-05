@@ -46,19 +46,24 @@ const Shorty = () => {
 				placeholder="enter long url"
 				onChange={(e) => setInput(e.target.value)}
 			></input>
-			<button onClick={shorten}>shorten</button>
+			<button className="shortenB" onClick={shorten}>
+				shorten
+			</button>
 			<p>{url.full_short_link}</p>
 			<div className="results">
+				<div className="copier">
+					<CopyToClipboard text={url}>
+						<button className="copyB" onClick={handleCopy}>
+							copy recent
+						</button>
+					</CopyToClipboard>
+				</div>
+				<hr></hr>
 				<ul>
 					{url.map((link) => {
 						return <li>{link.full_short_link}</li>;
 					})}
 				</ul>
-			</div>
-			<div>
-				<CopyToClipboard text={url}>
-					<button onClick={handleCopy}>copy</button>
-				</CopyToClipboard>
 			</div>
 		</div>
 	);

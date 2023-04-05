@@ -109,15 +109,10 @@ export default function App() {
 				</section>
 
 				<section className="mb-4">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-						distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-						optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-						sequi voluptate quas.
-					</p>
+					<p>The best way to shorten long urls.</p>
 				</section>
 
-				<section className="">
+				{/* <section className="">
 					<MDBRow>
 						<MDBCol lg="3" md="6" className="mb-4 mb-md-0">
 							<h5 className="text-uppercase">Links</h5>
@@ -227,7 +222,7 @@ export default function App() {
 							</ul>
 						</MDBCol>
 					</MDBRow>
-				</section>
+				</section>*/}
 			</MDBContainer>
 
 			<div
